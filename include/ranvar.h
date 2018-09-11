@@ -52,7 +52,7 @@
 #include "random.h"
 #include "rng.h"
 
-class RandomVariable : public TclObject {
+class RandomVariable {
  public:
 	virtual double value() = 0;
 	virtual double avg() = 0;
