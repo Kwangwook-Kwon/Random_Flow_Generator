@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "ranvar.h"
 #include "rng.h"
-#include "random.h"
 #include "rng.cc"
 #include "ranvar.cc"
 
