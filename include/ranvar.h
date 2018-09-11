@@ -51,18 +51,6 @@
 
 #include "rng.h"
 
-class RandomVariable {
- public:
-	virtual double value() = 0;
-	virtual double avg() = 0;
-	int command(int argc, const char*const* argv);
-	RandomVariable();
-	// This is added by Debojyoti Dutta 12th Oct 2000
-	int seed(char *);
- protected:
-	RNG* rng_;
-};
-
 
 
 #define INTER_DISCRETE 0	// no interpolation (discrete)
@@ -85,7 +73,6 @@ public:
 	int loadCDF(const char* filename);
 
 protected:
-	int command(int argc, const char*const* argv);
 	int lookup(double u);
 
 	double minCDF_;		// min value of the CDF (default to 0)

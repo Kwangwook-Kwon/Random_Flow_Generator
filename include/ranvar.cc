@@ -48,51 +48,6 @@ static const char rcsid[] =
 #include <string.h>
 #include "ranvar.h"
 
-RandomVariable::RandomVariable()
-{
-	rng_ = RNG::defaultrng(); 
-}
-
-int RandomVariable::command(int argc, const char*const* argv)
-{
-	Tcl& tcl = Tcl::instance();
-
-	if (argc == 2) {
-		if (strcmp(argv[1], "value") == 0) {
-			tcl.resultf("%6e", value());
-			return(TCL_OK);
-		}
-	}
-	if (argc == 3) {
-		if (strcmp(argv[1], "use-rng") == 0) {
-			rng_ = (RNG*)TclObject::lookup(argv[2]);
-			if (rng_ == 0) {
-				tcl.resultf("no such RNG %s", argv[2]);
-				return(TCL_ERROR);
-			}
-			return(TCL_OK);
-		}
-	}
-	return(TclObject::command(argc, argv));
-}
-
-// Added by Debojyoti Dutta 12 October 2000
-// This allows us to seed a randomvariable with 
-// our own RNG object. This command is called from 
-// expoo.cc and pareto.cc 
-
-int  RandomVariable::seed(char *x){
-        
-        Tcl& tcl = Tcl::instance();
-
-                rng_ = (RNG*)TclObject::lookup(x);
-                if (rng_ == 0) {
-                        tcl.resultf("no such RNG %s", x);
-                        return(TCL_ERROR);
-                }
-                return(TCL_OK);
- 
-}
 
                                                    
 /*
@@ -114,27 +69,9 @@ public:
 
 EmpiricalRandomVariable::EmpiricalRandomVariable() : minCDF_(0), maxCDF_(1), maxEntry_(32), table_(0)
 {
-	bind("minCDF_", &minCDF_);
-	bind("maxCDF_", &maxCDF_);
-	bind("interpolation_", &interpolation_);
-	bind("maxEntry_", &maxEntry_);
+
 }
 
-int EmpiricalRandomVariable::command(int argc, const char*const* argv)
-{
-	Tcl& tcl = Tcl::instance();
-	if (argc == 3) {
-		if (strcmp(argv[1], "loadCDF") == 0) {
-			if (loadCDF(argv[2]) == 0) {
-				tcl.resultf("%s loadCDF %s: invalid file",
-					    name(), argv[2]);
-				return (TCL_ERROR);
-			}
-			return (TCL_OK);
-		}
-	}
-	return RandomVariable::command(argc, argv);
-}
 
 int EmpiricalRandomVariable::loadCDF(const char* filename)
 {
