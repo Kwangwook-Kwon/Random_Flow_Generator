@@ -177,12 +177,9 @@ RNGImplementation::next_double()
  * RNG implements a nice front-end around RNGImplementation
  */
 #ifndef stand_alone
-static class RNGClass : public TclClass {
+static class RNGClass {
 public:
-	RNGClass() : TclClass("RNG") {}
-	TclObject* create(int, const char*const*) {
-		return(new RNG());
-	}
+	RNGClass(){}
 } class_rng;
 #endif /* stand_alone */
 

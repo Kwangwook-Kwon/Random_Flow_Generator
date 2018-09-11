@@ -98,9 +98,6 @@ private:
  * Use class RNG in real programs.
  */
 class RNG 
-#ifndef stand_alone
-	: public TclObject 
-#endif  /* stand_alone */
 {
 
 public:
