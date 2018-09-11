@@ -45,8 +45,10 @@ static const char rcsid[] =
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "ranvar.h"
+#include <ctime>
 
 
                                                    
@@ -59,13 +61,7 @@ static const char rcsid[] =
 //  code provided by Giao Nguyen
 */
 
-static class EmpiricalRandomVariableClass {
-public:
-	EmpiricalRandomVariableClass() {}
-	TclObject* create(int, const char*const*) {
-		return(new EmpiricalRandomVariable());
-	}
-} class_empiricalranvar;
+
 
 EmpiricalRandomVariable::EmpiricalRandomVariable() : minCDF_(0), maxCDF_(1), maxEntry_(32), table_(0)
 {
@@ -104,10 +100,11 @@ int EmpiricalRandomVariable::loadCDF(const char* filename)
 }
 
 double EmpiricalRandomVariable::value()
-{
+{	
 	if (numEntry_ <= 0)
 		return 0;
-	double u = rng_->uniform(minCDF_, maxCDF_);
+	srand( (unsigned)time(NULL)+rand()); 
+	double u = (double) (rand()%100)/100;
 	int mid = lookup(u);
 	if (mid && interpolation_ && u < table_[mid].cdf_)
 		return interpolate(u, table_[mid-1].cdf_, table_[mid-1].val_,
@@ -119,7 +116,7 @@ double EmpiricalRandomVariable::interpolate(double x, double x1, double y1, doub
 {
 	double value = y1 + (x - x1) * (y2 - y1) / (x2 - x1);
 	if (interpolation_ == INTER_INTEGRAL)	// round up
-		return ceil(value);
+		//return ceil(value);
 	return value;
 }
 

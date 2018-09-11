@@ -49,7 +49,7 @@
  * appropriate.
  */
 
-#include "rng.h"
+
 
 
 
@@ -62,7 +62,7 @@ struct CDFentry {
 	double val_;
 };
 
-class EmpiricalRandomVariable : public RandomVariable {
+class EmpiricalRandomVariable {
 public:
 	virtual double value();
 	virtual double interpolate(double u, double x1, double y1, double x2, double y2);
