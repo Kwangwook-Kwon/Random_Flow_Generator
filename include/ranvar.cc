@@ -46,6 +46,7 @@ static const char rcsid[] =
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <cmath>
 #include <string.h>
 #include "ranvar.h"
 #include <ctime>
@@ -116,7 +117,7 @@ double EmpiricalRandomVariable::interpolate(double x, double x1, double y1, doub
 {
 	double value = y1 + (x - x1) * (y2 - y1) / (x2 - x1);
 	if (interpolation_ == INTER_INTEGRAL)	// round up
-		//return ceil(value);
+		return ceil(value);
 	return value;
 }
 
