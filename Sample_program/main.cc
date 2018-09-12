@@ -3,12 +3,15 @@
 #include "ranvar.cc"
 
 int main(){
-    class EmpiricalRandomVariable flow_size;
-    flow_size.loadCDF("workload_webserver.tcl");
+    EmpiricalRandomVariable* flow = new  EmpiricalRandomVariable;
+    flow->loadCDF("workload_search.tcl");
+    char* flow_text;
 
+    for(int i=0; i<1; i++)
 
-    for(int i=0; i<100; i++)
-        printf("%f\n", flow_size.value());
+        flow_text=flow->flow_text();
+        printf("%s\n", flow_text);
+        printf("%d\n", (int) strlen(flow_text));
 
     return 0;
 }

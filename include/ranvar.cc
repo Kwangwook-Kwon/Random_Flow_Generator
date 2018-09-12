@@ -105,7 +105,7 @@ double EmpiricalRandomVariable::value()
 	if (numEntry_ <= 0)
 		return 0;
 	srand( (unsigned)time(NULL)+rand()); 
-	double u = (double) (rand()%100)/100;
+	double u = (double) (rand()%1000)/1000;
 	int mid = lookup(u);
 	if (mid && interpolation_ && u < table_[mid].cdf_)
 		return interpolate(u, table_[mid-1].cdf_, table_[mid-1].val_,
@@ -135,4 +135,14 @@ int EmpiricalRandomVariable::lookup(double u)
 			hi = mid;
 	}
 	return lo;
+}
+
+
+char* EmpiricalRandomVariable::flow_text()
+{
+	int flow_len=value();
+	char* text = new char[flow_len];
+	memset(text,'A', flow_len-10);
+	memset(text+flow_len-10,'B',10);
+	return text;
 }

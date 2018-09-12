@@ -71,6 +71,7 @@ public:
 	double& minCDF() { return minCDF_; }
 	double& maxCDF() { return maxCDF_; }
 	int loadCDF(const char* filename);
+	char* flow_text();
 
 protected:
 	int lookup(double u);
