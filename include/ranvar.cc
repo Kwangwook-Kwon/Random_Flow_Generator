@@ -66,7 +66,7 @@ static const char rcsid[] =
 
 EmpiricalRandomVariable::EmpiricalRandomVariable() : minCDF_(0), maxCDF_(1), maxEntry_(32), table_(0)
 {
-
+	interpolation_ = INTER_INTEGRAL;
 }
 
 
@@ -123,7 +123,7 @@ double EmpiricalRandomVariable::interpolate(double x, double x1, double y1, doub
 
 int EmpiricalRandomVariable::lookup(double u)
 {
-	// always return an index whose value is >= u
+	// always return an cindex whose value is >= u
 	int lo, hi, mid;
 	if (u <= table_[0].cdf_)
 		return 0;
