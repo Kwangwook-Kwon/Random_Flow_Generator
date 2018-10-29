@@ -7,8 +7,8 @@
 
 int main(){
 
-    EmpiricalRandomVariable* flow = new  EmpiricalRandomVariable;
-    flow->loadCDF(INPUT_CDF_FILE);
+    EmpiricalRandomVariable* flow = new  EmpiricalRandomVariable(INPUT_CDF_FILE);
+    //flow->loadCDF(INPUT_CDF_FILE);
     //char* flow_text[NUMBER_OF_FLOWS];
 
     for(int i=0; i<NUMBER_OF_FLOWS; i++)
