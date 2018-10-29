@@ -67,7 +67,7 @@ static const char rcsid[] =
 EmpiricalRandomVariable::EmpiricalRandomVariable(char *INPUT_CDF_FILE) : minCDF_(0), maxCDF_(1), maxEntry_(32), table_(0)
 {
 	interpolation_ = INTER_INTEGRAL;
-	loadCDF(INPUT_CDF_FILE)
+	loadCDF(INPUT_CDF_FILE);
 }
 
 
