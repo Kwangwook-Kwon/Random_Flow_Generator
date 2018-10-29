@@ -14,7 +14,7 @@ int main(){
         //flow_text[i]=flow->flow_text();
         // printf("%d\n", (int) strlen(flow_text[i]));
         //printf("%s\n", flow_text[i]);
-        printf("%f\n", flow->get_text());
+        printf("%s\n", flow->get_text());
     }
     return 0;
 }
