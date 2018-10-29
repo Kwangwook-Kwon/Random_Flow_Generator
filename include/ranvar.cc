@@ -139,7 +139,7 @@ int EmpiricalRandomVariable::lookup(double u)
 }
 
 
-char* EmpiricalRandomVariable::flow_text()
+char* EmpiricalRandomVariable::get_text()
 {
 	int flow_len=value();
 	char* text = new char[flow_len];
