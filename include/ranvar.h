@@ -67,7 +67,7 @@ public:
 	virtual double value();
 	virtual double interpolate(double u, double x1, double y1, double x2, double y2);
 	virtual double avg(){ return value(); } // junk
-	EmpiricalRandomVariable();
+	EmpiricalRandomVariable(char *);
 	double& minCDF() { return minCDF_; }
 	double& maxCDF() { return maxCDF_; }
 	int loadCDF(const char* filename);
