@@ -145,7 +145,7 @@ char* EmpiricalRandomVariable::get_text()
 	int flow_len=value();
 	char* text = new char[flow_len];
 	for(int i = 0 ; i < flow_len ; i++)
-		char[i] = 'a' + rand()%26
+		text[i] = 'a' + rand()%26
  	//memset(text,'A', flow_len-10);
 	//memset(text+flow_len-10,'B',10);
 	return text;
