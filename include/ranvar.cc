@@ -56,7 +56,7 @@ static const char rcsid[] =
 /*
 // Empirical Random Variable:
 //  CDF input from file with the following column
-//   1.  Possible values in a distrubutions
+//   1.  Possible s in a distrubutions
 //   2.  Number of occurances for those values
 //   3.  The CDF for those value
 //  code provided by Giao Nguyen
@@ -101,7 +101,7 @@ int EmpiricalRandomVariable::loadCDF(const char* filename)
 	return numEntry_;
 }
 
-double EmpiricalRandomVariable::value()
+double EmpiricalRandomVariable::get_length()
 {	
 	if (numEntry_ <= 0)
 		return 0;
@@ -142,7 +142,7 @@ int EmpiricalRandomVariable::lookup(double u)
 char* EmpiricalRandomVariable::get_text()
 {
 	srand( (unsigned)time(NULL)+rand()); 
-	int flow_len=value();
+	int flow_len=get_length();
 	char* text = new char[flow_len];
 	for(int i = 0 ; i < flow_len ; i++)
 		text[i] = 'a' + rand()%26;
