@@ -64,7 +64,7 @@ struct CDFentry {
 
 class EmpiricalRandomVariable {
 public:
-	virtual double value();
+	virtual double get_length();
 	virtual double interpolate(double u, double x1, double y1, double x2, double y2);
 	virtual double avg(){ return value(); } // junk
 	EmpiricalRandomVariable(char *);
