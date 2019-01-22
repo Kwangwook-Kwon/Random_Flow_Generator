@@ -2,7 +2,7 @@
 #include "ranvar.h"
 #include "ranvar.cc"
 
-#define NUMBER_OF_FLOWS 3
+#define NUMBER_OF_FLOWS 100
 #define INPUT_CDF_FILE "workload_mining.tcl"
 
 int main(){
@@ -11,7 +11,7 @@ int main(){
 
     for(int i=0; i<NUMBER_OF_FLOWS; i++)
     {
-        printf("%s\n", flow->get_text());
+        printf("%ld\n", flow->get_length());
     }
     return 0;
 }

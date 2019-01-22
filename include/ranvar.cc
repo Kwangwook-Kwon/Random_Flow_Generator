@@ -101,7 +101,7 @@ int EmpiricalRandomVariable::loadCDF(const char* filename)
 	return numEntry_;
 }
 
-double EmpiricalRandomVariable::get_length()
+long unsigned int  EmpiricalRandomVariable::get_length()
 {	
 	if (numEntry_ <= 0)
 		return 0;
